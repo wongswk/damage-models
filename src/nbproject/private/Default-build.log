@@ -1,0 +1,8 @@
+g++ -c -std=c++11 -fopenmp -Ofast -o mcmc_abc.o mcmc_abc.cpp -Iboost
+g++ -c -std=c++11 -fopenmp -Ofast -o model.o model.cpp -Iboost 
+g++ -c -std=c++11 -fopenmp -Ofast -o utils.o utils.cpp -Iboost 
+g++ -c -std=c++11 -fopenmp -Ofast -o brent.o brent.cpp -Iboost 
+g++ -g -std=c++11 -fopenmp -Ofast -o ../DOLmod_MCMC mcmc_abc.o model.o utils.o brent.o  -llapack -Iboost
+g++ -g -std=c++11 -fopenmp -Ofast -o ../CanADM solveCanODE.cpp -llapack -Iboost
+g++ -c -std=c++11 -fopenmp -Ofast -o generate.o generate.cpp -Iboost
+g++ -g -std=c++11 -fopenmp -Ofast -o ../generate generate.o model.o utils.o brent.o  -llapack -Iboost
